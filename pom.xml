@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wmt.webapp</groupId>
+    <artifactId>catalog</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+
+
+<build>
+
+		<finalName>web-catalog</finalName>
+		<resources>
+
+			<resource>
+				<directory>src/main/resources</directory>
+
+				<excludes>
+					<exclude>**/assemblies/*.xml</exclude>
+
+				</excludes>
+			</resource>
+
+		</resources>
+		<plugins>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+
+				<artifactId>exec-maven-plugin</artifactId>
+
+				<executions>
+					<execution>
+
+						<id>executegrunt</id>
+						<phase>compile</phase>
+
+						<goals>
+							<goal>exec</goal>
+
+						</goals>
+					</execution>
+
+				</executions>
+				<configuration>
+
+					<executable>grunt</executable>
+
+					<workingDirectory>src/main/webapp</workingDirectory>
+					<arguments>
+
+						<argument>build</argument>
+
+					</arguments>
+				</configuration>
+
+			</plugin>
+			<plugin>
+
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+
+				<configuration>
+					<finalName>${project.name}</finalName>
+
+					<appendAssemblyId>false</appendAssemblyId>
+
+					<descriptors>
+						<descriptor>src/main/resources/assembly.xml</descriptor>
+
+					</descriptors>
+				</configuration>
+
+				<executions>
+					<execution>
+
+						<id>make-assembly</id>
+
+						<phase>package</phase>
+						<goals>
+
+							<goal>single</goal>
+
+						</goals>
+					</execution>
+
+				</executions>
+			</plugin>
+
+        </plugins>
+    </build>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+
+    </pluginRepositories>
+<distributionManagement>
+   <repository>
+      <id>nexus</id>
+        <url>http://mthakkar-mbp:2081/nexus/content/repositories/catwmt/</url>
+   </repository>
+</distributionManagement>
+
+</project>

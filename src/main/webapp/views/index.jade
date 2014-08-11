@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to our Gorillas
+   
+    // Wrapper
+    #wrapper
+
+        // Catalog INFO
+        #CatalogInfo
+            h2 Product Details
+            p
+                strong ItemNumber:
+                |  <span id='CatalogInfoProduct'></span>
+                br
+                strong Brand:
+                |  <span id='CatalogInfoBrand'></span>
+                br
+                strong Model:
+                |  <span id='CatalogInfoModel'></span>
+                br
+                strong Color:
+                |  <span id='CatalogInfoColor'></span>
+                br
+                strong Price:
+                |  <span id='CatalogInfoPrice'></span>
+        // /Catalog INFO
+
+        // Catalog LIST
+        h2 Catalog List
+        #CatalogList
+            table
+                thead
+                    th ProductId
+                    th Category
+                    th Brand
+                tbody
+        // /Catalog LIST
+
+        // ADD Catalog
+        h2 Add Catalog
+        #addCatalog
+            fieldset
+                input#inputProductId(type='text', placeholder='ProductId')
+                input#inputCategory(type='text', placeholder='Category')
+                br
+                input#inputBrand(type='text', placeholder='Brand')
+                input#inputModel(type='text', placeholder='Model')
+                br
+                input#inputColor(type='text', placeholder='Color')
+                input#inputPrice(type='text', placeholder='Price')
+                br
+                button#btnAddCatalog Add Catalog
+        // /ADD Catalog
+
+
+    // /WRAPPER
